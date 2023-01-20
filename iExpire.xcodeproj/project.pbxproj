@@ -18,6 +18,7 @@
 		92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6B297A4C7900F12C85 /* Item+CoreDataClass.swift */; };
 		92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6C297A4C7900F12C85 /* Item+CoreDataProperties.swift */; };
 		92FA0B70297A531600F12C85 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6F297A531600F12C85 /* DataController.swift */; };
+		92FA0B72297A5D3C00F12C85 /* TrackedItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		92FA0B6B297A4C7900F12C85 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		92FA0B6C297A4C7900F12C85 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		92FA0B6F297A531600F12C85 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				92FA0B4D297A327300F12C85 /* Preview Content */,
 				92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */,
 				92FA0B6F297A531600F12C85 /* DataController.swift */,
+				92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */,
 			);
 			path = iExpire;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
 				92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */,
+				92FA0B72297A5D3C00F12C85 /* TrackedItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
