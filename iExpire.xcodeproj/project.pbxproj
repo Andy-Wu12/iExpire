@@ -15,8 +15,8 @@
 		92FA0B59297A399D00F12C85 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B56297A399D00F12C85 /* README.md */; };
 		92FA0B5A297A399D00F12C85 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B57297A399D00F12C85 /* LICENSE */; };
 		92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */; };
-		92FA0B69297A431100F12C85 /* Food+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B67297A431100F12C85 /* Food+CoreDataClass.swift */; };
-		92FA0B6A297A431100F12C85 /* Food+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B68297A431100F12C85 /* Food+CoreDataProperties.swift */; };
+		92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6B297A4C7900F12C85 /* Item+CoreDataClass.swift */; };
+		92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6C297A4C7900F12C85 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		92FA0B56297A399D00F12C85 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		92FA0B57297A399D00F12C85 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		92FA0B5C297A3F5A00F12C85 /* iExpireProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iExpireProject.xcdatamodel; sourceTree = "<group>"; };
-		92FA0B67297A431100F12C85 /* Food+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		92FA0B68297A431100F12C85 /* Food+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		92FA0B6B297A4C7900F12C85 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		92FA0B6C297A4C7900F12C85 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,8 @@
 		92FA0B5E297A408500F12C85 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92FA0B67297A431100F12C85 /* Food+CoreDataClass.swift */,
-				92FA0B68297A431100F12C85 /* Food+CoreDataProperties.swift */,
+				92FA0B6B297A4C7900F12C85 /* Item+CoreDataClass.swift */,
+				92FA0B6C297A4C7900F12C85 /* Item+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,11 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92FA0B6A297A431100F12C85 /* Food+CoreDataProperties.swift in Sources */,
 				92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */,
 				92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */,
+				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
-				92FA0B69297A431100F12C85 /* Food+CoreDataClass.swift in Sources */,
+				92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

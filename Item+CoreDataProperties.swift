@@ -1,5 +1,5 @@
 //
-//  Food+CoreDataProperties.swift
+//  Item+CoreDataProperties.swift
 //  iExpire
 //
 //  Created by Andy Wu on 1/19/23.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Food {
+extension Item {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Food> {
-        return NSFetchRequest<Food>(entityName: "Food")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Item> {
+        return NSFetchRequest<Item>(entityName: "Item")
     }
 
     @NSManaged public var name: String?
@@ -25,8 +25,9 @@ extension Food {
     public var wrappedName: String {
         name ?? "Unknown name"
     }
+
 }
 
-extension Food : Identifiable {
+extension Item : Identifiable {
 
 }
