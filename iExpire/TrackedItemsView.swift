@@ -10,7 +10,10 @@ import CoreData
 
 struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
+    
     @FetchRequest(sortDescriptors: []) var items: FetchedResults<Item>
+    
+    @State private var showingAddScreen = false
     
     var body: some View {
         NavigationView {
@@ -24,6 +27,18 @@ struct TrackedItemsView: View {
                 }
             }
             .navigationTitle("Tracked Items")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddScreen.toggle()
+                    } label: {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingAddScreen) {
+                AddExpirationView()
+            }
         }
     }
 }

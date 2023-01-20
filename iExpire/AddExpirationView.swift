@@ -9,8 +9,14 @@ import SwiftUI
 
 struct AddExpirationView: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
+    
     @State private var name = ""
     @State private var expDate = Date()
+    
+    func isValidItem() -> Bool {
+        !(name.isEmpty)
+    }
     
     var body: some View {
         NavigationView {
@@ -31,6 +37,7 @@ struct AddExpirationView: View {
                     Button("Create") {
                         saveItem()
                     }
+                    .disabled(!isValidItem())
                 }
                 .navigationTitle("Add Item")
             }
@@ -43,6 +50,7 @@ struct AddExpirationView: View {
         newItem.expirationDate = expDate
         
         try? moc.save()
+        dismiss()
     }
 }
 
