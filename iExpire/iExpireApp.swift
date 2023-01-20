@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct iExpireApp: App {
+    @State private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             AddExpirationView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
