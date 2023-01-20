@@ -12,8 +12,6 @@ struct AddExpirationView: View {
     @State private var name = ""
     @State private var expDate = Date()
     
-    @FetchRequest(sortDescriptors: []) var items: FetchedResults<Item>
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -35,14 +33,6 @@ struct AddExpirationView: View {
                     }
                 }
                 .navigationTitle("Add Item")
-                
-                // Temporary for testing item creation
-                VStack {
-                    Text("Tracked items")
-                    List(items, id: \.self) { item in
-                        Text(item.wrappedName)
-                    }
-                }
             }
         }
     }

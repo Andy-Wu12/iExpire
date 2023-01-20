@@ -13,7 +13,8 @@ struct iExpireApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AddExpirationView()
+            TrackedItemsView()
+//            AddExpirationView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
