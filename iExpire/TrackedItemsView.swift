@@ -11,7 +11,10 @@ import CoreData
 struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
     
-    @FetchRequest(sortDescriptors: []) var items: FetchedResults<Item>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.expirationDate)
+        SortDescriptor(\.name)
+    ]) var items: FetchedResults<Item>
     
     @State private var showingAddScreen = false
     
