@@ -12,7 +12,7 @@ struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.expirationDate)
+        SortDescriptor(\.expirationDate),
         SortDescriptor(\.name)
     ]) var items: FetchedResults<Item>
     
