@@ -11,7 +11,7 @@ import SwiftUI
 struct iExpireApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AddExpirationView()
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AddExpirationView.swift
 //  iExpire
 //
 //  Created by Andy Wu on 1/19/23.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AddExpirationView: View {
     var body: some View {
         Text("iExpire")
             .font(.title)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AddExpirationView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AddExpirationView()
     }
 }
