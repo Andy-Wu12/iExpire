@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
@@ -25,7 +24,7 @@ struct TrackedItemsView: View {
                     HStack {
                         Text(item.wrappedName)
                         Spacer()
-                        Text(item.expirationDate?.formatted(.dateTime.day().month().year()) ?? "Unknown expiration")
+                        Text(item.wrappedExpiration)
                     }
                 }
             }
