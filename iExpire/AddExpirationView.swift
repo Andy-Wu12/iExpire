@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddExpirationView: View {
     @Environment(\.managedObjectContext) var moc
@@ -13,6 +14,8 @@ struct AddExpirationView: View {
     
     @State private var name = ""
     @State private var expDate = Date()
+    @State private var image: PhotosPickerItem? = nil
+    @State private var imageData: Data? = nil
     
     func isValidItem() -> Bool {
         !(name.isEmpty)
@@ -34,6 +37,12 @@ struct AddExpirationView: View {
                         Text("Expiration Date")
                     }
                     
+                    Section {
+                        PhotoSelectorView(selectedItem: $image, imageData: $imageData)
+                    } header: {
+                        Text("Photo of item")
+                    }
+                        
                     Button("Create") {
                         saveItem()
                     }
@@ -47,7 +56,8 @@ struct AddExpirationView: View {
     func saveItem() {
         let newItem = Item(context: moc)
         newItem.name = name
-        newItem.expirationDate = expDate
+        newItem.expirationDate = expDate.formatted(.dateTime.day().month().year())
+        newItem.image = imageData
         
         try? moc.save()
         dismiss()
