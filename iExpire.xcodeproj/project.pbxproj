@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
 		92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B46297A326F00F12C85 /* iExpireApp.swift */; };
 		92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B48297A326F00F12C85 /* AddExpirationView.swift */; };
 		92FA0B4B297A327300F12C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B4A297A327300F12C85 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		92E1884B297BB04E009BD0E4 /* iExpire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpire.entitlements; sourceTree = "<group>"; };
+		92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorView.swift; sourceTree = "<group>"; };
 		92FA0B43297A326F00F12C85 /* iExpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FA0B46297A326F00F12C85 /* iExpireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpireApp.swift; sourceTree = "<group>"; };
 		92FA0B48297A326F00F12C85 /* AddExpirationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */,
 				92FA0B6F297A531600F12C85 /* DataController.swift */,
 				92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */,
+				92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */,
 			);
 			path = iExpire;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */,
 				92FA0B70297A531600F12C85 /* DataController.swift in Sources */,
 				92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */,
+				92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */,
 				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
 				92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */,

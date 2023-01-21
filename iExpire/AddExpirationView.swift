@@ -15,6 +15,7 @@ struct AddExpirationView: View {
     @State private var name = ""
     @State private var expDate = Date()
     @State private var image: PhotosPickerItem? = nil
+    @State private var imageData: Data? = nil
     
     func isValidItem() -> Bool {
         !(name.isEmpty)
@@ -37,13 +38,7 @@ struct AddExpirationView: View {
                     }
                     
                     Section {
-                        PhotosPicker(
-                            selection: $image,
-                            matching: .images, photoLibrary: .shared()
-                        )
-                        {
-                            Text("Select")
-                        }
+                        PhotoSelectorView(selectedItem: $image)
                     } header: {
                         Text("Photo of item")
                     }
@@ -61,8 +56,8 @@ struct AddExpirationView: View {
     func saveItem() {
         let newItem = Item(context: moc)
         newItem.name = name
-        print(expDate.formatted(.dateTime.day().month().year()))
         newItem.expirationDate = expDate.formatted(.dateTime.day().month().year())
+        newItem.image = imageData
         
         try? moc.save()
         dismiss()
