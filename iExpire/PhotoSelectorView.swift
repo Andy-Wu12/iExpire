@@ -13,6 +13,9 @@ struct PhotoSelectorView: View {
     
     @Binding var selectedItem: PhotosPickerItem?
     
+    // Optionally provide Binding to get Data of image for the calling View
+    var imageData: Binding<Data?>? = nil
+    
     var body: some View {
         PhotosPicker(selection: $selectedItem, matching: .images) {
             Text("Select Photo")
@@ -22,6 +25,7 @@ struct PhotoSelectorView: View {
                 // Retrieve selected asset in the form of Data
                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
                     selectedImageData = data
+                    imageData?.wrappedValue = selectedImageData
                 }
             }
         }

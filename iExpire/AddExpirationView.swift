@@ -38,7 +38,7 @@ struct AddExpirationView: View {
                     }
                     
                     Section {
-                        PhotoSelectorView(selectedItem: $image)
+                        PhotoSelectorView(selectedItem: $image, imageData: $imageData)
                     } header: {
                         Text("Photo of item")
                     }

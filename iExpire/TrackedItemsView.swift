@@ -21,10 +21,12 @@ struct TrackedItemsView: View {
         NavigationView {
             VStack {
                 List(items, id: \.self) { item in
-                    HStack {
-                        Text(item.wrappedName)
-                        Spacer()
-                        Text(item.wrappedExpiration)
+                    VStack {
+                        HStack {
+                            Text(item.wrappedName)
+                            Spacer()
+                            Text(item.wrappedExpiration)
+                        }
                     }
                 }
             }
