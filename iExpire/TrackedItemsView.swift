@@ -23,7 +23,7 @@ struct TrackedItemsView: View {
                 LazyVStack(spacing: 10) {
                     ForEach(items, id: \.self) { item in
                         NavigationLink {
-                            Text("Item details here")
+                            ItemDetailView(item: item)
                         } label: {
                             ListItem(item: item)
                         }

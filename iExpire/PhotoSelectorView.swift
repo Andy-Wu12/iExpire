@@ -32,6 +32,7 @@ struct PhotoSelectorView: View {
         
         if selectedImageData != nil {
             LoadedImageView(imageData: selectedImageData)
+                .frame(width: 250, height: 250)
         }
     }
 }
@@ -45,7 +46,6 @@ struct LoadedImageView: View {
             Image(uiImage: uiImage)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 250, height: 250)
         }
     }
 }
