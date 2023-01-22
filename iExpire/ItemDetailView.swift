@@ -22,7 +22,6 @@ struct ItemDetailView: View {
                 ConditionalSpacer(isOn: item.image == nil)
                 
                 LoadedImageView(imageData: item.image)
-                    .frame(width: geometry.size.width * 0.90)
                     .cornerRadius(cornerRadius)
                     .overlay(
                             RoundedRectangle(cornerRadius: cornerRadius)

@@ -32,7 +32,6 @@ struct PhotoSelectorView: View {
         
         if selectedImageData != nil {
             LoadedImageView(imageData: selectedImageData)
-                .frame(width: 250, height: 250)
         }
     }
 }
