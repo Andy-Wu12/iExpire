@@ -27,7 +27,7 @@ struct TrackedItemsView: View {
                         } label: {
                             ListItem(item: item)
                         }
-                        .background(.purple)
+                        .background(Color("UniversalPurple"))
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .padding([.leading, .trailing])
@@ -64,10 +64,10 @@ struct ListItem: View {
         VStack {
             HStack {
                 Text(item.wrappedName)
-                    .padding(.leading)
+                    .padding()
                 Spacer()
                 Text(item.wrappedExpiration)
-                    .padding(.trailing)
+                    .padding()
             }
         }
     }
