@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
+		92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18850297C6F12009BD0E4 /* ItemDetailView.swift */; };
+		92E18855297CBD6A009BD0E4 /* ConditionalSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18854297CBD6A009BD0E4 /* ConditionalSpacer.swift */; };
 		92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B46297A326F00F12C85 /* iExpireApp.swift */; };
 		92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B48297A326F00F12C85 /* AddExpirationView.swift */; };
 		92FA0B4B297A327300F12C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B4A297A327300F12C85 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		92E1884B297BB04E009BD0E4 /* iExpire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpire.entitlements; sourceTree = "<group>"; };
 		92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorView.swift; sourceTree = "<group>"; };
+		92E18850297C6F12009BD0E4 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		92E18854297CBD6A009BD0E4 /* ConditionalSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalSpacer.swift; sourceTree = "<group>"; };
 		92FA0B43297A326F00F12C85 /* iExpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FA0B46297A326F00F12C85 /* iExpireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpireApp.swift; sourceTree = "<group>"; };
 		92FA0B48297A326F00F12C85 /* AddExpirationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationView.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92E18856297CBE05009BD0E4 /* UtilViews */ = {
+			isa = PBXGroup;
+			children = (
+				92E18854297CBD6A009BD0E4 /* ConditionalSpacer.swift */,
+			);
+			path = UtilViews;
+			sourceTree = "<group>";
+		};
 		92FA0B3A297A326F00F12C85 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +85,8 @@
 		92FA0B45297A326F00F12C85 /* iExpire */ = {
 			isa = PBXGroup;
 			children = (
+				92E18856297CBE05009BD0E4 /* UtilViews */,
+				92E18850297C6F12009BD0E4 /* ItemDetailView.swift */,
 				92E1884B297BB04E009BD0E4 /* iExpire.entitlements */,
 				92FA0B5E297A408500F12C85 /* Models */,
 				92FA0B46297A326F00F12C85 /* iExpireApp.swift */,
@@ -180,6 +194,8 @@
 				92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */,
 				92FA0B70297A531600F12C85 /* DataController.swift in Sources */,
 				92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */,
+				92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */,
+				92E18855297CBD6A009BD0E4 /* ConditionalSpacer.swift in Sources */,
 				92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */,
 				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,

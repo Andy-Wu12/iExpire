@@ -19,29 +19,33 @@ struct TrackedItemsView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List(items, id: \.self) { item in
-                    VStack {
-                        HStack {
-                            Text(item.wrappedName)
-                            Spacer()
-                            Text(item.wrappedExpiration)
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 10) {
+                    ForEach(items, id: \.self) { item in
+                        NavigationLink {
+                            ItemDetailView(item: item)
+                        } label: {
+                            ListItem(item: item)
+                        }
+                        .background(Color("UniversalPurple"))
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding([.leading, .trailing])
+                    }
+                }
+                .navigationTitle("Tracked Items")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAddScreen.toggle()
+                        } label: {
+                            Label("Add Item", systemImage: "plus")
                         }
                     }
                 }
-            }
-            .navigationTitle("Tracked Items")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingAddScreen.toggle()
-                    } label: {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                .sheet(isPresented: $showingAddScreen) {
+                    AddExpirationView()
                 }
-            }
-            .sheet(isPresented: $showingAddScreen) {
-                AddExpirationView()
             }
         }
     }
@@ -50,5 +54,21 @@ struct TrackedItemsView: View {
 struct TrackedItemsView_Previews: PreviewProvider {
     static var previews: some View {
         TrackedItemsView()
+    }
+}
+
+struct ListItem: View {
+    var item: Item
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(item.wrappedName)
+                    .padding()
+                Spacer()
+                Text(item.wrappedExpiration)
+                    .padding()
+            }
+        }
     }
 }
