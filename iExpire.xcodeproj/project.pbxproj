@@ -58,9 +58,20 @@
 		92E18856297CBE05009BD0E4 /* UtilViews */ = {
 			isa = PBXGroup;
 			children = (
+				92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */,
 				92E18854297CBD6A009BD0E4 /* ConditionalSpacer.swift */,
 			);
 			path = UtilViews;
+			sourceTree = "<group>";
+		};
+		92E18857297CEB68009BD0E4 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				92E18850297C6F12009BD0E4 /* ItemDetailView.swift */,
+				92FA0B48297A326F00F12C85 /* AddExpirationView.swift */,
+				92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 		92FA0B3A297A326F00F12C85 = {
@@ -85,18 +96,15 @@
 		92FA0B45297A326F00F12C85 /* iExpire */ = {
 			isa = PBXGroup;
 			children = (
+				92E18857297CEB68009BD0E4 /* MainViews */,
 				92E18856297CBE05009BD0E4 /* UtilViews */,
-				92E18850297C6F12009BD0E4 /* ItemDetailView.swift */,
 				92E1884B297BB04E009BD0E4 /* iExpire.entitlements */,
 				92FA0B5E297A408500F12C85 /* Models */,
 				92FA0B46297A326F00F12C85 /* iExpireApp.swift */,
-				92FA0B48297A326F00F12C85 /* AddExpirationView.swift */,
 				92FA0B4A297A327300F12C85 /* Assets.xcassets */,
 				92FA0B4D297A327300F12C85 /* Preview Content */,
 				92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */,
 				92FA0B6F297A531600F12C85 /* DataController.swift */,
-				92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */,
-				92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */,
 			);
 			path = iExpire;
 			sourceTree = "<group>";
