@@ -18,8 +18,7 @@ extension Item {
 
     @NSManaged public var name: String?
     @NSManaged public var expirationDate: String?
-    // Images can be converted to binary data using something like
-    // image.jpegData(compressionQuality: 1.0)
+    @NSManaged public var notes: String?
     @NSManaged public var image: Data?
 
     public var wrappedName: String {
@@ -28,6 +27,10 @@ extension Item {
 
     public var wrappedExpiration: String {
         expirationDate ?? "Unknown expiration"
+    }
+    
+    public var wrappedNotes: String {
+        notes ?? ""
     }
 }
 
