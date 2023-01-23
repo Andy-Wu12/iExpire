@@ -66,7 +66,7 @@ struct ListItem: View {
                 Text(item.wrappedName)
                     .padding()
                 Spacer()
-                Text(item.wrappedExpiration)
+                ExpirationTextView(expirationDate: item.wrappedExpiration)
                     .padding()
             }
         }

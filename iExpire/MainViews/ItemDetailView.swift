@@ -15,31 +15,46 @@ struct ItemDetailView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Text(item.wrappedName)
-                    .font(.largeTitle)
-                
-                ConditionalSpacer(isOn: item.image == nil)
-                
-                LoadedImageView(imageData: item.image)
-                    .cornerRadius(cornerRadius)
-                    .overlay(
+            ScrollView {
+                VStack {
+                    Text(item.wrappedName)
+                        .font(.largeTitle)
+                    
+                    ConditionalSpacer(isOn: item.image == nil)
+                    
+                    LoadedImageView(imageData: item.image)
+                        .cornerRadius(cornerRadius)
+                        .overlay(
                             RoundedRectangle(cornerRadius: cornerRadius)
                                 .stroke(Color("UniversalPurple"), lineWidth: 4)
                         )
-                    .shadow(color: Color("UniversalPurple"), radius: 10)
-                    .padding()
-                
-                Section {
-                    Text(item.wrappedExpiration)
-                        .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
-                } header: {
-                    Text("Expiration Date")
+                        .shadow(color: Color("UniversalPurple"), radius: 10)
+                        .padding()
+                    
+                    if !item.wrappedNotes.isEmpty {
+                        Section {
+                            Text(item.wrappedNotes)
+                        } header: {
+                            Text("Notes")
+                                .fontWeight(.heavy)
+                                .padding(.top)
+                        }
+                    }
+                    
+                    Section {
+                        ExpirationTextView(expirationDate: item.wrappedExpiration)
+                            .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
+                    } header: {
+                        Text("Expiration Date")
+                            .fontWeight(.heavy)
+                            .padding(.top)
+                    }
+                    
+                    ConditionalSpacer(isOn: item.image == nil)
                 }
-                
-                ConditionalSpacer(isOn: item.image == nil)
+                .padding([.trailing, .leading])
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -50,7 +65,7 @@ struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let item = Item(context: moc)
         item.name = "Bananas"
-        item.expirationDate = Date.now.formatted(.dateTime.month().day().year())
+        item.expirationDate = dateToFormatString(date: Date.now)
         
         return ItemDetailView(item: item)
     }
