@@ -19,35 +19,48 @@ struct TrackedItemsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                LazyVStack(spacing: 10) {
-                    ForEach(items, id: \.self) { item in
-                        NavigationLink {
-                            ItemDetailView(item: item)
-                        } label: {
-                            ListItem(item: item)
-                        }
-                        .background(Color("UniversalPurple"))
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding([.leading, .trailing])
+            List {
+                ForEach(items, id: \.self) { item in
+                    NavigationLink {
+                        ItemDetailView(item: item)
+                    } label: {
+                        ListItem(item: item)
+                    }
+//                    .background(Color("UniversalPurple"))
+//                    .foregroundColor(.white)
+//                    .clipShape(RoundedRectangle(cornerRadius: 5))
+//                    .padding([.leading, .trailing])
+                }
+                .onDelete(perform: delete)
+            }
+            .listStyle(.plain)
+            .navigationTitle("Tracked Items")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddScreen.toggle()
+                    } label: {
+                        Label("Add Item", systemImage: "plus")
                     }
                 }
-                .navigationTitle("Tracked Items")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingAddScreen.toggle()
-                        } label: {
-                            Label("Add Item", systemImage: "plus")
-                        }
-                    }
-                }
-                .sheet(isPresented: $showingAddScreen) {
-                    AddExpirationView()
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
                 }
             }
+            .sheet(isPresented: $showingAddScreen) {
+                AddExpirationView()
+            }
+            
         }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+            let item = items[index]
+            moc.delete(item)
+        }
+        
+        try? moc.save()
     }
 }
 
