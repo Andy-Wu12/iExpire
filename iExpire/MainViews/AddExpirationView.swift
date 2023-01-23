@@ -13,6 +13,7 @@ struct AddExpirationView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var name = ""
+    @State private var notes = ""
     @State private var expDate = Date()
     @State private var image: PhotosPickerItem? = nil
     @State private var imageData: Data? = nil
@@ -28,22 +29,19 @@ struct AddExpirationView: View {
                     Section {
                         TextField("Item name", text: $name)
                             .autocorrectionDisabled()
-                    }
-                    Section {
-                        DatePicker(selection: $expDate, displayedComponents: [.date]) {}
-                            .labelsHidden()
-                        
+                        DatePicker("Expires:", selection: $expDate, displayedComponents: [.date])
                     } header: {
-                        Text("Expiration Date")
+                        Text("Required")
                     }
                     
                     Section {
+                        TextEditor(text: $notes)
                         PhotoSelectorView(selectedItem: $image, imageData: $imageData)
                     } header: {
-                        Text("Photo of item")
+                        Text("Optional notes and photo")
                     }
-                        
-                    Button("Create") {
+                    
+                    Button("Submit") {
                         saveItem()
                     }
                     .disabled(!isValidItem())
@@ -58,6 +56,7 @@ struct AddExpirationView: View {
         newItem.name = name
         newItem.expirationDate = expDate.formatted(.dateTime.day().month().year())
         newItem.image = imageData
+        newItem.notes = notes
         
         try? moc.save()
         dismiss()
