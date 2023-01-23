@@ -54,7 +54,7 @@ struct AddExpirationView: View {
     func saveItem() {
         let newItem = Item(context: moc)
         newItem.name = name
-        newItem.expirationDate = expDate.formatted(.dateTime.day().month().year())
+        newItem.expirationDate = dateToFormatString(date: expDate)
         newItem.image = imageData
         newItem.notes = notes
         

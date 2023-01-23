@@ -42,7 +42,7 @@ struct ItemDetailView: View {
                     }
                     
                     Section {
-                        Text(item.wrappedExpiration)
+                        ExpirationTextView(expirationDate: item.wrappedExpiration)
                             .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
                     } header: {
                         Text("Expiration Date")
@@ -65,7 +65,7 @@ struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let item = Item(context: moc)
         item.name = "Bananas"
-        item.expirationDate = Date.now.formatted(.dateTime.month().day().year())
+        item.expirationDate = dateToFormatString(date: Date.now)
         
         return ItemDetailView(item: item)
     }
