@@ -14,7 +14,7 @@ struct ExpirationTextView: View {
         Text(expirationDate < dateToFormatString(date: Date.now) ? "EXPIRED" : expirationDate)
             .foregroundColor(
                 expirationDate < dateToFormatString(date: Date.now) ? Color(red: 0.9, green: 0.1, blue: 0.3) :
-                    expirationDate == dateToFormatString(date: Date.now) ? .yellow : .black
+                    expirationDate == dateToFormatString(date: Date.now) ? .yellow : .secondary
             )
             
     }
