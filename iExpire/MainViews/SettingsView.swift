@@ -13,7 +13,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                Text("Toggle Notifications")
+                NotificationPermission()
             } header: {
                 Text("App Permissions")
             }
@@ -25,7 +25,7 @@ struct SettingsView: View {
             }
             
             Section {
-                Text("Test lockscreen notifications here")
+                TestNotificationButton()
             } header: {
                 Text("Testing")
             }
@@ -53,6 +53,23 @@ struct ExportToCSVButton: View {
     var body: some View {
         ButtonWithIconLeft("Export Item Data (CSV)", image: Image(systemName: sfImage)) {
             // action code here
+        }
+    }
+}
+
+struct TestNotificationButton: View {
+    var body: some View {
+        Button("Schedule Notification") {
+            let content = UNMutableNotificationContent()
+            content.title = "EXPIRATION"
+            content.subtitle = "You have an item that expires TODAY"
+            content.sound = UNNotificationSound.default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request)
         }
     }
 }
