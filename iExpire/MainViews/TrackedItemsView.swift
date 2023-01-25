@@ -70,8 +70,8 @@ struct TrackedItemsView: View {
             let item = items[index]
             // Only delete notification if expirationDate is unique
             let sameExpirationItems = items.filter { $0.wrappedExpiration == item.wrappedExpiration }
-            if sameExpirationItems.count <= 1 {
-                removeItemNotification(id: item.wrappedExpiration)
+            if sameExpirationItems.count == 1 {
+                removeSpecificNotifications(for: [item.wrappedExpiration])
             }
             moc.delete(item)
         }
@@ -79,16 +79,6 @@ struct TrackedItemsView: View {
         try? moc.save()
     }
     
-    func removeItemNotification(id: String) {
-        let center = UNUserNotificationCenter.current()
-        center.getPendingNotificationRequests() { notifications in
-            for notification in notifications {
-                if notification.identifier == id {
-                    removeSpecificNotifications(for: [id])
-                }
-            }
-        }
-    }
 }
 
 struct TrackedItemsView_Previews: PreviewProvider {
