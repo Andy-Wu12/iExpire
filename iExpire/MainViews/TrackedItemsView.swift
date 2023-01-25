@@ -16,6 +16,7 @@ struct TrackedItemsView: View {
     ]) var items: FetchedResults<Item>
     
     @State private var showingAddScreen = false
+    @State private var showingSettings = false
     
     var body: some View {
         NavigationView {
@@ -46,9 +47,19 @@ struct TrackedItemsView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingSettings.toggle()
+                    } label: {
+                        Label("Settings", systemImage: "gear")
+                    }
+                }
             }
             .sheet(isPresented: $showingAddScreen) {
                 AddExpirationView()
+            }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
             }
             
         }
