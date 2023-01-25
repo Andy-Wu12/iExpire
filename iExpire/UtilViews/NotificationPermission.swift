@@ -13,32 +13,25 @@ struct NotificationPermission: View {
     @State private var notificationsOn = UIApplication.shared.isRegisteredForRemoteNotifications
     
     var body: some View {
-        Toggle("Allow Notifications", isOn: $notificationsOn)
-            // Get old value of toggle with [notificationsOn]
-            .onChange(of: notificationsOn) { [notificationsOn] _ in
-                if !requestedPermission {
-                    UserDefaults.standard.set(true, forKey: "notifications")
-                    requestedPermission = true
-                    
-                // Notifications can only be requested when app is opened for first time after installation
-                   UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
-                   { success, error in
-                       if success {
-                           print("Permission granted!")
-                       } else {
-                           self.notificationsOn = false
-                       }
+        Button("Manage Notification Settings") {
+            if !requestedPermission {
+                UserDefaults.standard.set(true, forKey: "notifications")
+                requestedPermission = true
+            
+            // Notifications can only be requested when app is opened for first time after installation
+               UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+               { success, error in
+                   if success {
+                       print("Permission granted!")
+                   } else if let error = error {
+                       print(error.localizedDescription)
                    }
-                } else {
-                    // Handle already denied permission by opening phone's settings page for app
-                    if !notificationsOn {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-                        self.notificationsOn = false
-                    } else {
-                        // Remove notification permission / all scheduled notifications
-                    }
-                }
+               }
+            } else {
+                // Handle already denied permission by opening phone's settings page for app
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
             }
+        }
     }
 }
 
