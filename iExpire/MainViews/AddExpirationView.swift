@@ -18,6 +18,7 @@ struct AddExpirationView: View {
     @State private var image: PhotosPickerItem? = nil
     @State private var imageData: Data? = nil
     
+    
     func isValidItem() -> Bool {
         !(name.isEmpty)
     }
@@ -58,8 +59,38 @@ struct AddExpirationView: View {
         newItem.image = imageData
         newItem.notes = notes
         
-        try? moc.save()
+        do {
+            try moc.save()
+            scheduleItemNotification(for: newItem.wrappedExpiration, on: expDate)
+        } catch {
+            // TODO: Should throw, handle error, and show error in view somewhere
+            return
+        }
+        
         dismiss()
+    }
+    
+    // Notifications should be keyed by Item.wrappedExpiration
+    func scheduleItemNotification(for id: String, on date: Date) {
+        let title = "EXPIRATION"
+        let subtitle = "You have items expiring TODAY (\(id))!"
+        let delay: Double = Date.now.distance(to: date)
+        
+        if delay <= 0 {
+            return
+        }
+        
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests() { notifications in
+            for notification in notifications {
+                // If notification already exists for date, do nothing
+                if notification.identifier == id {
+                    return
+                }
+            }
+            
+            scheduleNotification(title: title, subtitle: subtitle, secondsFromNow: delay, identifier: id)
+        }
     }
 }
 

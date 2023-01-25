@@ -21,7 +21,10 @@ func scheduleNotification(title: String, subtitle: String, secondsFromNow: Doubl
     UNUserNotificationCenter.current().add(request)
 }
 
-// Remove specific pending notification
-    // UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
-// or ALL notifications with .
-    // removeAllPendingNotificationRequests()
+func removeSpecificNotifications(for ids: [String]) {
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
+}
+
+func removeAllNotifications() {
+    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+}
