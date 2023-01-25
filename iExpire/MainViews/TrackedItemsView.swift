@@ -68,11 +68,17 @@ struct TrackedItemsView: View {
     func delete(at offsets: IndexSet) {
         for index in offsets {
             let item = items[index]
+            // Only delete notification if expirationDate is unique
+            let sameExpirationItems = items.filter { $0.wrappedExpiration == item.wrappedExpiration }
+            if sameExpirationItems.count == 1 {
+                removeSpecificNotifications(for: [item.wrappedExpiration])
+            }
             moc.delete(item)
         }
         
         try? moc.save()
     }
+    
 }
 
 struct TrackedItemsView_Previews: PreviewProvider {
