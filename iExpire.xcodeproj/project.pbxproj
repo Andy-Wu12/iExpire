@@ -15,6 +15,7 @@
 		92E188622980900D009BD0E4 /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E188612980900D009BD0E4 /* NotificationPermission.swift */; };
 		92E1886429809063009BD0E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1886329809063009BD0E4 /* SettingsView.swift */; };
 		92E188662980D995009BD0E4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E188652980D995009BD0E4 /* Notifications.swift */; };
+		92E18868298378A3009BD0E4 /* CoreDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18867298378A3009BD0E4 /* CoreDataUtil.swift */; };
 		92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B46297A326F00F12C85 /* iExpireApp.swift */; };
 		92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B48297A326F00F12C85 /* AddExpirationView.swift */; };
 		92FA0B4B297A327300F12C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B4A297A327300F12C85 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		92E188612980900D009BD0E4 /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		92E1886329809063009BD0E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		92E188652980D995009BD0E4 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		92E18867298378A3009BD0E4 /* CoreDataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtil.swift; sourceTree = "<group>"; };
 		92FA0B43297A326F00F12C85 /* iExpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FA0B46297A326F00F12C85 /* iExpireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpireApp.swift; sourceTree = "<group>"; };
 		92FA0B48297A326F00F12C85 /* AddExpirationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				92E1885B297E4D70009BD0E4 /* DateStringUtil.swift */,
 				92E188652980D995009BD0E4 /* Notifications.swift */,
+				92E18867298378A3009BD0E4 /* CoreDataUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
 				92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */,
+				92E18868298378A3009BD0E4 /* CoreDataUtil.swift in Sources */,
 				92FA0B72297A5D3C00F12C85 /* TrackedItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
