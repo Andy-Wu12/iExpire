@@ -38,13 +38,26 @@ struct SettingsView: View {
 }
 
 struct ResetDataButton: View {
+    @Environment(\.managedObjectContext) var moc
+    @State private var showingAlert = false
+    
     let sfImage = "eraser.line.dashed.fill"
     
     var body: some View {
         ButtonWithIconLeft("Clear all app data", image: Image(systemName: sfImage), role: .destructive) {
-            // action code here
+                showingAlert = true
+        }
+        .alert("This is an IRREVERSIBLE action!", isPresented: $showingAlert) {
+            Button("OK", role: .destructive) {
+                clearEntityRecords(managedObjectContext: moc, entityName: "Item")
+                removeAllNotifications()
+            }
+            Button("Cancel", role: .cancel) {
+                showingAlert = false
+            }
         }
     }
+    
 }
 
 struct ExportToCSVButton: View {
