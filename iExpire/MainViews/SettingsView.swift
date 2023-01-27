@@ -40,10 +40,24 @@ struct SettingsView: View {
 struct ResetDataButton: View {
     let sfImage = "eraser.line.dashed.fill"
     
+    @State private var showingAlert = false
+    
     var body: some View {
         ButtonWithIconLeft("Clear all app data", image: Image(systemName: sfImage), role: .destructive) {
-            // action code here
+                showingAlert = true
         }
+        .alert("This is an IRREVERSIBLE action!", isPresented: $showingAlert) {
+            Button("OK", role: .destructive) {
+                deleteData()
+            }
+            Button("Cancel", role: .cancel) {
+                showingAlert = false
+            }
+        }
+    }
+    
+    func deleteData() {
+        
     }
 }
 
