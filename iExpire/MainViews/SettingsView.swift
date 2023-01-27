@@ -50,6 +50,7 @@ struct ResetDataButton: View {
         .alert("This is an IRREVERSIBLE action!", isPresented: $showingAlert) {
             Button("OK", role: .destructive) {
                 clearEntityRecords(managedObjectContext: moc, entityName: "Item")
+                removeAllNotifications()
             }
             Button("Cancel", role: .cancel) {
                 showingAlert = false
