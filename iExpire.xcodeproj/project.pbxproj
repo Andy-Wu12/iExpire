@@ -17,6 +17,7 @@
 		92E188662980D995009BD0E4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E188652980D995009BD0E4 /* Notifications.swift */; };
 		92E18868298378A3009BD0E4 /* CoreDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18867298378A3009BD0E4 /* CoreDataUtil.swift */; };
 		92E188712984B279009BD0E4 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E188702984B279009BD0E4 /* FileUtil.swift */; };
+		92E188732984CB14009BD0E4 /* CSVDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E188722984CB14009BD0E4 /* CSVDocument.swift */; };
 		92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B46297A326F00F12C85 /* iExpireApp.swift */; };
 		92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B48297A326F00F12C85 /* AddExpirationView.swift */; };
 		92FA0B4B297A327300F12C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B4A297A327300F12C85 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		92E188652980D995009BD0E4 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		92E18867298378A3009BD0E4 /* CoreDataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtil.swift; sourceTree = "<group>"; };
 		92E188702984B279009BD0E4 /* FileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
+		92E188722984CB14009BD0E4 /* CSVDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDocument.swift; sourceTree = "<group>"; };
 		92FA0B43297A326F00F12C85 /* iExpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FA0B46297A326F00F12C85 /* iExpireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpireApp.swift; sourceTree = "<group>"; };
 		92FA0B48297A326F00F12C85 /* AddExpirationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				92E188652980D995009BD0E4 /* Notifications.swift */,
 				92E18867298378A3009BD0E4 /* CoreDataUtil.swift */,
 				92E188702984B279009BD0E4 /* FileUtil.swift */,
+				92E188722984CB14009BD0E4 /* CSVDocument.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E188712984B279009BD0E4 /* FileUtil.swift in Sources */,
+				92E188732984CB14009BD0E4 /* CSVDocument.swift in Sources */,
 				92E188662980D995009BD0E4 /* Notifications.swift in Sources */,
 				92E188622980900D009BD0E4 /* NotificationPermission.swift in Sources */,
 				92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */,

@@ -65,30 +65,38 @@ struct ExportToCSVButton: View {
     @Environment(\.managedObjectContext) var moc
     var items: FetchedResults<Item>
     
-    let filename = "items.csv"
-    let sfImage = "square.and.arrow.down.fill"
+    @State private var csvDoc: CSVDocument = CSVDocument(initialText: "")
+    @State private var isExporting = false
+    
+    private let filename = "items.csv"
+    private let sfImage = "square.and.arrow.down.fill"
     
     var body: some View {
         ButtonWithIconLeft("Export Item Data (CSV)", image: Image(systemName: sfImage)) {
-            createCSV()
+            createCSVData()
+            isExporting = true
         }
+        .fileExporter(isPresented: $isExporting, document: csvDoc,
+                      contentType: .commaSeparatedText, defaultFilename: filename) { result in
+            switch result {
+            case .success(let url):
+                print("Saved to \(url)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            isExporting = false
+        }
+        
     }
     
-    func createCSV() {
+    func createCSVData() {
         var csvString = "\("Name"),\("ExpirationDate")\n\n"
         
         items.forEach { item in
             csvString = csvString.appending("\"\(item.wrappedName)\",\"\(item.wrappedExpiration)\"\n")
         }
         
-        do {
-            let path = getDocumentsDirectory().appendingPathComponent(filename)
-            print(csvString)
-            try csvString.write(to: path, atomically: true, encoding: .utf8)
-            print("Exists? \(documentExists(at: filename))")
-        } catch {
-            print("Error creating file")
-        }
+        csvDoc.text = csvString
     }
 }
 
