@@ -9,6 +9,7 @@ import SwiftUI
 import UserNotifications
 
 struct SettingsView: View {
+    var items: FetchedResults<Item>
     
     var body: some View {
         List {
@@ -19,7 +20,7 @@ struct SettingsView: View {
             }
             
             Section {
-                ExportToCSVButton()
+                ExportToCSVButton(items: items)
             } header: {
                 Text("Your Data")
             }
@@ -61,12 +62,41 @@ struct ResetDataButton: View {
 }
 
 struct ExportToCSVButton: View {
-    let sfImage = "square.and.arrow.down.fill"
+    @Environment(\.managedObjectContext) var moc
+    var items: FetchedResults<Item>
+    
+    @State private var csvDoc: CSVDocument = CSVDocument(initialText: "")
+    @State private var isExporting = false
+    
+    private let filename = "items.csv"
+    private let sfImage = "square.and.arrow.down.fill"
     
     var body: some View {
         ButtonWithIconLeft("Export Item Data (CSV)", image: Image(systemName: sfImage)) {
-            // action code here
+            createCSVData()
+            isExporting = true
         }
+        .fileExporter(isPresented: $isExporting, document: csvDoc,
+                      contentType: .commaSeparatedText, defaultFilename: filename) { result in
+            switch result {
+            case .success(let url):
+                print("Saved to \(url)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            isExporting = false
+        }
+        
+    }
+    
+    func createCSVData() {
+        var csvString = "\("Name"),\("ExpirationDate"),\("Notes")\n\n"
+        
+        items.forEach { item in
+            csvString = csvString.appending("\"\(item.wrappedName)\",\"\(item.wrappedExpiration)\",\"\(item.wrappedNotes)\"\n")
+        }
+        
+        csvDoc.text = csvString
     }
 }
 
@@ -107,7 +137,14 @@ struct ButtonWithIconLeft: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.expirationDate),
+        SortDescriptor(\.name)
+    ]) static var items: FetchedResults<Item>
+    
     static var previews: some View {
-        SettingsView()
+        SettingsView(items: items)
     }
 }
