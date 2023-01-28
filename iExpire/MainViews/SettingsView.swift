@@ -90,10 +90,10 @@ struct ExportToCSVButton: View {
     }
     
     func createCSVData() {
-        var csvString = "\("Name"),\("ExpirationDate")\n\n"
+        var csvString = "\("Name"),\("ExpirationDate"),\("Notes")\n\n"
         
         items.forEach { item in
-            csvString = csvString.appending("\"\(item.wrappedName)\",\"\(item.wrappedExpiration)\"\n")
+            csvString = csvString.appending("\"\(item.wrappedName)\",\"\(item.wrappedExpiration)\",\"\(item.wrappedNotes)\"\n")
         }
         
         csvDoc.text = csvString
