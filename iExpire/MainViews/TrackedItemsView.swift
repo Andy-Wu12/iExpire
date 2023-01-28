@@ -59,7 +59,7 @@ struct TrackedItemsView: View {
                 AddExpirationView()
             }
             .sheet(isPresented: $showingSettings) {
-                SettingsView()
+                SettingsView(items: items)
             }
             
         }

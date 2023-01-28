@@ -9,6 +9,7 @@ import SwiftUI
 import UserNotifications
 
 struct SettingsView: View {
+    var items: FetchedResults<Item>
     
     var body: some View {
         List {
@@ -19,7 +20,7 @@ struct SettingsView: View {
             }
             
             Section {
-                ExportToCSVButton()
+                ExportToCSVButton(items: items)
             } header: {
                 Text("Your Data")
             }
@@ -61,11 +62,32 @@ struct ResetDataButton: View {
 }
 
 struct ExportToCSVButton: View {
+    @Environment(\.managedObjectContext) var moc
+    var items: FetchedResults<Item>
+    
+    let filename = "items.csv"
     let sfImage = "square.and.arrow.down.fill"
     
     var body: some View {
         ButtonWithIconLeft("Export Item Data (CSV)", image: Image(systemName: sfImage)) {
-            // action code here
+            createCSV()
+        }
+    }
+    
+    func createCSV() {
+        var csvString = "\("Name"),\("ExpirationDate")\n\n"
+        
+        items.forEach { item in
+            csvString = csvString.appending("\"\(item.wrappedName)\",\"\(item.wrappedExpiration)\"\n")
+        }
+        
+        do {
+            let path = getDocumentsDirectory().appendingPathComponent(filename)
+            print(csvString)
+            try csvString.write(to: path, atomically: true, encoding: .utf8)
+            print("Exists? \(documentExists(at: filename))")
+        } catch {
+            print("Error creating file")
         }
     }
 }
@@ -107,7 +129,14 @@ struct ButtonWithIconLeft: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.expirationDate),
+        SortDescriptor(\.name)
+    ]) static var items: FetchedResults<Item>
+    
     static var previews: some View {
-        SettingsView()
+        SettingsView(items: items)
     }
 }
