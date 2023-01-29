@@ -9,52 +9,68 @@ import SwiftUI
 import CoreData
 
 struct ItemDetailView: View {
-    var item: Item
+    @ObservedObject var item: Item
+    
+    @State private var isEditing = false
     
     private let cornerRadius: CGFloat = 20
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack {
-                    Text(item.wrappedName)
-                        .font(.largeTitle)
-                    
-                    ConditionalSpacer(isOn: item.image == nil)
-                    
-                    LoadedImageView(imageData: item.image)
-                        .cornerRadius(cornerRadius)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: cornerRadius)
-                                .stroke(Color("UniversalPurple"), lineWidth: 4)
-                        )
-                        .shadow(color: Color("UniversalPurple"), radius: 10)
-                        .padding()
-                    
-                    if !item.wrappedNotes.isEmpty {
+        NavigationView {
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack {
+                        Text(item.wrappedName)
+                            .font(.largeTitle)
+                        
+                        ConditionalSpacer(isOn: item.image == nil)
+                        
+                        LoadedImageView(imageData: item.image)
+                            .cornerRadius(cornerRadius)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: cornerRadius)
+                                    .stroke(Color("UniversalPurple"), lineWidth: 4)
+                            )
+                            .shadow(color: Color("UniversalPurple"), radius: 10)
+                            .padding()
+                        
+                        if !item.wrappedNotes.isEmpty {
+                            Section {
+                                Text(item.wrappedNotes)
+                            } header: {
+                                Text("Notes")
+                                    .fontWeight(.heavy)
+                                    .padding(.top)
+                            }
+                        }
+                        
                         Section {
-                            Text(item.wrappedNotes)
+                            ExpirationTextView(expirationDate: item.wrappedExpiration)
+                                .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
                         } header: {
-                            Text("Notes")
+                            Text("Expiration Date")
                                 .fontWeight(.heavy)
                                 .padding(.top)
                         }
+                        
+                        ConditionalSpacer(isOn: item.image == nil)
                     }
-                    
-                    Section {
-                        ExpirationTextView(expirationDate: item.wrappedExpiration)
-                            .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
-                    } header: {
-                        Text("Expiration Date")
-                            .fontWeight(.heavy)
-                            .padding(.top)
-                    }
-                    
-                    ConditionalSpacer(isOn: item.image == nil)
+                    .padding([.trailing, .leading])
+                    .frame(maxWidth: .infinity)
                 }
-                .padding([.trailing, .leading])
-                .frame(maxWidth: .infinity)
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isEditing = true
+                } label: {
+                    Text("Edit")
+                }
+            }
+        }
+        .sheet(isPresented: $isEditing) {
+            ItemEditView(item: item)
         }
     }
 }
