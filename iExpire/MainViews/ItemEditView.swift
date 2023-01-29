@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ItemEditView: View {
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var item: Item
     
     @State private var name = ""
@@ -37,12 +39,15 @@ struct ItemEditView: View {
                 }
                 
                 Button("Save") {
-                    // Saving changes here
-
+                    item.name = name
+                    item.notes = notes
+                    try? moc.save()
+                    dismiss()
                 }
+                .disabled(name.isEmpty)
             }
             .navigationTitle("Edit Item")
         }
-        .multilineTextAlignment(.center)
     }
+    
 }
