@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCF0292985FF120066A4A4 /* ItemEditView.swift */; };
 		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
 		92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18850297C6F12009BD0E4 /* ItemDetailView.swift */; };
 		92E18855297CBD6A009BD0E4 /* ConditionalSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18854297CBD6A009BD0E4 /* ConditionalSpacer.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92CCF0292985FF120066A4A4 /* ItemEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
 		92E1884B297BB04E009BD0E4 /* iExpire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpire.entitlements; sourceTree = "<group>"; };
 		92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorView.swift; sourceTree = "<group>"; };
 		92E18850297C6F12009BD0E4 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		92E18857297CEB68009BD0E4 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				92CCF0292985FF120066A4A4 /* ItemEditView.swift */,
 				92E18850297C6F12009BD0E4 /* ItemDetailView.swift */,
 				92FA0B48297A326F00F12C85 /* AddExpirationView.swift */,
 				92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */,
@@ -244,6 +247,7 @@
 				92E1886429809063009BD0E4 /* SettingsView.swift in Sources */,
 				92E1885E297E52AE009BD0E4 /* ExpirationTextView.swift in Sources */,
 				92E1885C297E4D70009BD0E4 /* DateStringUtil.swift in Sources */,
+				92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */,
 				92FA0B6D297A4C7900F12C85 /* Item+CoreDataClass.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
 				92FA0B6E297A4C7900F12C85 /* Item+CoreDataProperties.swift in Sources */,
