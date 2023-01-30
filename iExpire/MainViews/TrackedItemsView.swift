@@ -11,7 +11,7 @@ struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.expirationDate),
+        SortDescriptor(\.expirationDateTime),
         SortDescriptor(\.name)
     ]) var items: FetchedResults<Item>
     
@@ -92,7 +92,7 @@ struct ListItem: View {
                 Text(item.wrappedName)
                     .padding()
                 Spacer()
-                ExpirationTextView(expirationDate: item.expirationToDate)
+                ExpirationTextView(expirationDate: item.wrappedDateTime)
                     .padding()
             }
         }
