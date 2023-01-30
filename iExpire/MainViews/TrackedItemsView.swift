@@ -17,20 +17,34 @@ struct TrackedItemsView: View {
     
     @State private var showingAddScreen = false
     @State private var showingSettings = false
+    @State private var showingDeleteAlert = false
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items, id: \.self) { item in
-                    NavigationLink {
-                        ItemDetailView(item: item)
-                    } label: {
-                        ListItem(item: item)
+            VStack {
+                Button("Delete EXPIRED") {
+                    showingDeleteAlert.toggle()
+                }
+                .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
+                    Button("Cancel", role: .cancel) {
+                        showingDeleteAlert.toggle()
+                    }
+                    Button("OK", role: .destructive) {
+                        // Delete code goes here
                     }
                 }
-                .onDelete(perform: delete)
+                List {
+                    ForEach(items, id: \.self) { item in
+                        NavigationLink {
+                            ItemDetailView(item: item)
+                        } label: {
+                            ListItem(item: item)
+                        }
+                    }
+                    .onDelete(perform: delete)
+                }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
             .navigationTitle("Tracked Items")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

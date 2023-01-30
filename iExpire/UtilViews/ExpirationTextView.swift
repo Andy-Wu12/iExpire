@@ -10,11 +10,13 @@ import SwiftUI
 struct ExpirationTextView: View {
     var expirationDate: Date
     
+    let now = createDateAtMidnight(date: Date.now)
+    
     var expired: Bool {
-        let result = expirationDate.compare(createDateAtMidnight(date: Date.now))
+        let result = expirationDate.compare(now)
         switch result {
         case(.orderedSame):
-            return true
+            return false
         case(.orderedAscending):
             return true
         case(.orderedDescending):
@@ -26,7 +28,7 @@ struct ExpirationTextView: View {
         Text(expired ? "EXPIRED" : dateToFormatString(date: expirationDate))
             .foregroundColor(
                 expired ? Color(red: 0.9, green: 0.1, blue: 0.3) :
-                    expirationDate == Date.now ? .yellow : .secondary
+                    expirationDate == now ? .yellow : .secondary
             )
             
     }
