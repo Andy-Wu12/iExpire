@@ -12,8 +12,6 @@ struct ExpirationTextView: View {
     
     var expired: Bool {
         let result = expirationDate.compare(createDateAtMidnight(date: Date.now))
-        print(expirationDate)
-        print(Date.now)
         switch result {
         case(.orderedSame):
             return true

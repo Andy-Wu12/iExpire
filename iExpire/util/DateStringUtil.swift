@@ -24,13 +24,8 @@ func createDateAtMidnight(month: Int, day: Int, year: Int) -> Date {
 }
 
 func createDateAtMidnight(date: Date) -> Date {
-    var components = DateComponents()
-    components.month = Int(monthIntDict[date.formatted(.dateTime.month())]!)
-    components.day = Int(date.formatted(.dateTime.day()))
-    components.year = Int(date.formatted(.dateTime.year()))
-    components.hour = 0
-    components.minute = 0
-    components.second = 0
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year, .month, .day], from: date)
     
     return Calendar.current.date(from: components)!
 }
