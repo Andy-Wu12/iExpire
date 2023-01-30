@@ -32,6 +32,18 @@ extension Item {
     public var wrappedNotes: String {
         notes ?? ""
     }
+    
+    public var expirationToDate: Date {
+        let dateNoCommas = expirationDate!.filter { $0 != "," }
+        let splitComponents = dateNoCommas.split(separator: " ")
+        
+        var components = DateComponents()
+        components.month = monthIntDict[String(splitComponents[0])]
+        components.day = Int(String(splitComponents[1])) ?? 0
+        components.year = Int(String(splitComponents[2])) ?? 0
+        
+        return Calendar.current.date(from: components)!
+    }
 }
 
 extension Item : Identifiable {
