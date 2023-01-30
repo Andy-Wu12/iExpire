@@ -27,10 +27,6 @@ struct TrackedItemsView: View {
                     } label: {
                         ListItem(item: item)
                     }
-//                    .background(Color("UniversalPurple"))
-//                    .foregroundColor(.white)
-//                    .clipShape(RoundedRectangle(cornerRadius: 5))
-//                    .padding([.leading, .trailing])
                 }
                 .onDelete(perform: delete)
             }
@@ -96,7 +92,7 @@ struct ListItem: View {
                 Text(item.wrappedName)
                     .padding()
                 Spacer()
-                ExpirationTextView(expirationDate: item.wrappedExpiration)
+                ExpirationTextView(expirationDate: item.expirationToDate)
                     .padding()
             }
         }
