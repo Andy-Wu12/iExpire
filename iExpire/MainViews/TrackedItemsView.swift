@@ -30,7 +30,8 @@ struct TrackedItemsView: View {
                         showingDeleteAlert.toggle()
                     }
                     Button("OK", role: .destructive) {
-                        // Delete code goes here
+                        clearEntityRecords(managedObjectContext: moc, entityName: "Item",
+                                           predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
                     }
                 }
                 List {
