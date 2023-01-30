@@ -8,8 +8,9 @@
 import CoreData
 import SwiftUI
 
-func clearEntityRecords(managedObjectContext moc: NSManagedObjectContext ,entityName: String) {
+func clearEntityRecords(managedObjectContext moc: NSManagedObjectContext, entityName: String, predicate: NSPredicate? = nil) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    fetchRequest.predicate = predicate
     
     let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     batchDeleteRequest.resultType = NSBatchDeleteRequestResultType.resultTypeObjectIDs

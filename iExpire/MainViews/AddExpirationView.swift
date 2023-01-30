@@ -58,6 +58,7 @@ struct AddExpirationView: View {
         newItem.expirationDate = dateToFormatString(date: expDate)
         newItem.image = imageData
         newItem.notes = notes
+        newItem.expirationDateTime = createDateAtMidnight(date: expDate)
         
         do {
             try moc.save()

@@ -11,30 +11,41 @@ struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.expirationDate),
+        SortDescriptor(\.expirationDateTime),
         SortDescriptor(\.name)
     ]) var items: FetchedResults<Item>
     
     @State private var showingAddScreen = false
     @State private var showingSettings = false
+    @State private var showingDeleteAlert = false
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items, id: \.self) { item in
-                    NavigationLink {
-                        ItemDetailView(item: item)
-                    } label: {
-                        ListItem(item: item)
-                    }
-//                    .background(Color("UniversalPurple"))
-//                    .foregroundColor(.white)
-//                    .clipShape(RoundedRectangle(cornerRadius: 5))
-//                    .padding([.leading, .trailing])
+            VStack {
+                Button("Delete EXPIRED") {
+                    showingDeleteAlert.toggle()
                 }
-                .onDelete(perform: delete)
+                .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
+                    Button("Cancel", role: .cancel) {
+                        showingDeleteAlert.toggle()
+                    }
+                    Button("OK", role: .destructive) {
+                        clearEntityRecords(managedObjectContext: moc, entityName: "Item",
+                                           predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
+                    }
+                }
+                List {
+                    ForEach(items, id: \.self) { item in
+                        NavigationLink {
+                            ItemDetailView(item: item)
+                        } label: {
+                            ListItem(item: item)
+                        }
+                    }
+                    .onDelete(perform: delete)
+                }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
             .navigationTitle("Tracked Items")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -96,7 +107,7 @@ struct ListItem: View {
                 Text(item.wrappedName)
                     .padding()
                 Spacer()
-                ExpirationTextView(expirationDate: item.wrappedExpiration)
+                ExpirationTextView(expirationDate: item.wrappedDateTime)
                     .padding()
             }
         }

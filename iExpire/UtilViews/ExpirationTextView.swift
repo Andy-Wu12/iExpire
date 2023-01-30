@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct ExpirationTextView: View {
-    var expirationDate: String
+    var expirationDate: Date
+    
+    let now = createDateAtMidnight(date: Date.now)
+    
+    var expired: Bool {
+        let result = expirationDate.compare(now)
+        switch result {
+        case(.orderedSame):
+            return false
+        case(.orderedAscending):
+            return true
+        case(.orderedDescending):
+            return false
+        }
+    }
     
     var body: some View {
-        Text(expirationDate < dateToFormatString(date: Date.now) ? "EXPIRED" : expirationDate)
+        Text(expired ? "EXPIRED" : dateToFormatString(date: expirationDate))
             .foregroundColor(
-                expirationDate < dateToFormatString(date: Date.now) ? Color(red: 0.9, green: 0.1, blue: 0.3) :
-                    expirationDate == dateToFormatString(date: Date.now) ? .yellow : .secondary
+                expired ? Color(red: 0.9, green: 0.1, blue: 0.3) :
+                    expirationDate == now ? .yellow : .secondary
             )
             
     }
@@ -22,6 +36,6 @@ struct ExpirationTextView: View {
 
 struct ExpirationTextView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpirationTextView(expirationDate: dateToFormatString(date: Date.now))
+        ExpirationTextView(expirationDate: Date.now)
     }
 }

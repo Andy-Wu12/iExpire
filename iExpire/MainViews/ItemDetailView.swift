@@ -45,7 +45,7 @@ struct ItemDetailView: View {
                         }
                         
                         Section {
-                            ExpirationTextView(expirationDate: item.wrappedExpiration)
+                            ExpirationTextView(expirationDate: item.wrappedDateTime)
                                 .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
                         } header: {
                             Text("Expiration Date")
