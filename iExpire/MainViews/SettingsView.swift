@@ -102,7 +102,7 @@ struct ExportToCSVButton: View {
 
 struct TestNotificationButton: View {
     var body: some View {
-        Button("Schedule Notification") {
+        Button("Test Notifications (5 seconds)") {
             scheduleNotification(
                 title: "EXPIRATION",
                 subtitle: "You have an item that expires soon",
