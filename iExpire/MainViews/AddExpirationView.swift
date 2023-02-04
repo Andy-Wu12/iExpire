@@ -14,10 +14,12 @@ struct AddExpirationView: View {
     
     @State private var name = ""
     @State private var notes = ""
-    @State private var category = "Other"
     @State private var expDate = Date()
     @State private var image: PhotosPickerItem? = nil
     @State private var imageData: Data? = nil
+    
+    @State private var category = ""
+    @State private var showCustomCategory = false
     
     func isValidItem() -> Bool {
         !(name.isEmpty)
@@ -40,8 +42,17 @@ struct AddExpirationView: View {
                             Text("Notes:")
                             TextEditor(text: $notes)
                         }
-
-                        Picker("Category:", selection: $category) {
+                        
+                        if showCustomCategory {
+                            TextField("Category: ", text: $category)
+                        } else {
+                            Picker("Category:", selection: $category) {
+                                Text("Other")
+                                // Rest of user-defined categories should go here
+                            }
+                        }
+                        Button("Toggle Custom Category") {
+                            showCustomCategory.toggle()
                         }
                         PhotoSelectorView(selectedItem: $image, imageData: $imageData)
                     } header: {
