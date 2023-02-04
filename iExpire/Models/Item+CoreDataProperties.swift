@@ -19,6 +19,8 @@ extension Item {
     @NSManaged public var name: String?
     @NSManaged public var expirationDate: String?
     @NSManaged public var expirationDateTime: Date?
+
+    @NSManaged public var category: String?
     @NSManaged public var notes: String?
     @NSManaged public var image: Data?
 
@@ -36,6 +38,10 @@ extension Item {
     
     public var wrappedDateTime: Date {
         expirationDateTime ?? Date.now
+    }
+    
+    public var wrappedCategory: String {
+        category ?? "Other"
     }
 }
 

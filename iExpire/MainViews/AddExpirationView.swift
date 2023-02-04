@@ -14,10 +14,10 @@ struct AddExpirationView: View {
     
     @State private var name = ""
     @State private var notes = ""
+    @State private var category = "Other"
     @State private var expDate = Date()
     @State private var image: PhotosPickerItem? = nil
     @State private var imageData: Data? = nil
-    
     
     func isValidItem() -> Bool {
         !(name.isEmpty)
@@ -36,10 +36,16 @@ struct AddExpirationView: View {
                     }
                     
                     Section {
-                        TextEditor(text: $notes)
+                        HStack {
+                            Text("Notes:")
+                            TextEditor(text: $notes)
+                        }
+
+                        Picker("Category:", selection: $category) {
+                        }
                         PhotoSelectorView(selectedItem: $image, imageData: $imageData)
                     } header: {
-                        Text("Optional notes and photo")
+                        Text("Optional fields")
                     }
                     
                     Button("Submit") {
@@ -59,6 +65,7 @@ struct AddExpirationView: View {
         newItem.image = imageData
         newItem.notes = notes
         newItem.expirationDateTime = createDateAtMidnight(date: expDate)
+        newItem.category = category
         
         do {
             try moc.save()
