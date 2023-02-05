@@ -46,11 +46,9 @@ struct AddExpirationView: View {
                                 TextField("Category", text: $category)
                             }
                         } else {
-                            HStack {
-                                Picker("Category:", selection: $category) {
-                                    ForEach(categories, id: \.self) {
-                                        Text($0).tag(category)
-                                    }
+                            Picker("Category:", selection: $category) {
+                                ForEach(categories, id: \.self) {
+                                    Text($0).tag($0)
                                 }
                             }
                         }
