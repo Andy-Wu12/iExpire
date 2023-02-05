@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OrderedCollections
 
 struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
@@ -26,14 +27,16 @@ struct TrackedItemsView: View {
         }
         return uniqueCategories
     }
-    
-    var itemsGroupedByCategory: Dictionary<String, [Item]> {
-        var groupedItems: Dictionary<String, [Item]> = [:]
-        items.forEach() { item in
+     
+    var itemsGroupedByCategory: OrderedDictionary<String, [(Item, Int)]> {
+        // Extra Int is for onDelete to properly delete correct Item
+        var groupedItems: OrderedDictionary<String, [(Item, Int)]> = [:]
+        for i in 0..<items.count {
+            let item = items[i]
             if let _ = groupedItems[item.wrappedCategory] {
-                groupedItems[item.wrappedCategory]!.append(item)
+                groupedItems[item.wrappedCategory]!.append((item, i))
             } else {
-                groupedItems[item.wrappedCategory] = [item]
+                groupedItems[item.wrappedCategory] = [(item, i)]
             }
         }
         
@@ -56,14 +59,27 @@ struct TrackedItemsView: View {
                     }
                 }
                 List {
-                    ForEach(items, id: \.self) { item in
-                        NavigationLink {
-                            ItemDetailView(item: item)
-                        } label: {
-                            ListItem(item: item)
+                    // Section
+                    ForEach(itemsGroupedByCategory.keys, id: \.self) { section in
+                        Section {
+                            ForEach(itemsGroupedByCategory[section]!, id: \.0) { item in
+                                NavigationLink {
+                                    ItemDetailView(item: item.0)
+                                } label: {
+                                    ListItem(item: item.0)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    Button(role: .destructive) {
+                                        delete(at: IndexSet(integer: item.1))
+                                    } label: {
+                                        Image(systemName: "trash")
+                                    }
+                                }
+                            }
+                        } header: {
+                            Text(section)
                         }
                     }
-                    .onDelete(perform: delete)
                 }
                 .listStyle(.plain)
             }
@@ -75,9 +91,6 @@ struct TrackedItemsView: View {
                     } label: {
                         Label("Add Item", systemImage: "plus")
                     }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

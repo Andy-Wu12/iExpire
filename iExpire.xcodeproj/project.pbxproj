@@ -11,6 +11,7 @@
 		925C9C6E298EDEA900482187 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */; };
 		925C9C72298EE7A400482187 /* iExpireProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */; };
 		925C9C74298F26AC00482187 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C73298F26AC00482187 /* StringUtil.swift */; };
+		925C9C7A298F6F6A00482187 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 925C9C79298F6F6A00482187 /* OrderedCollections */; };
 		92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCF0292985FF120066A4A4 /* ItemEditView.swift */; };
 		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
 		92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18850297C6F12009BD0E4 /* ItemDetailView.swift */; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				925C9C7A298F6F6A00482187 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +182,9 @@
 			dependencies = (
 			);
 			name = iExpire;
+			packageProductDependencies = (
+				925C9C79298F6F6A00482187 /* OrderedCollections */,
+			);
 			productName = iExpire;
 			productReference = 92FA0B43297A326F00F12C85 /* iExpire.app */;
 			productType = "com.apple.product-type.application";
@@ -208,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 92FA0B3A297A326F00F12C85;
+			packageReferences = (
+				925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 92FA0B44297A326F00F12C85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -486,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		925C9C79298F6F6A00482187 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */ = {
