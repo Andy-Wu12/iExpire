@@ -27,6 +27,19 @@ struct TrackedItemsView: View {
         return uniqueCategories
     }
     
+    var itemsGroupedByCategory: Dictionary<String, [Item]> {
+        var groupedItems: Dictionary<String, [Item]> = [:]
+        items.forEach() { item in
+            if let _ = groupedItems[item.wrappedCategory] {
+                groupedItems[item.wrappedCategory]!.append(item)
+            } else {
+                groupedItems[item.wrappedCategory] = [item]
+            }
+        }
+        
+        return groupedItems
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
