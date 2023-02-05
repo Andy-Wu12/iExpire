@@ -10,6 +10,7 @@
 		925C9C6D298EDEA900482187 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C69298EDEA900482187 /* Item+CoreDataProperties.swift */; };
 		925C9C6E298EDEA900482187 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */; };
 		925C9C72298EE7A400482187 /* iExpireProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */; };
+		925C9C74298F26AC00482187 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C73298F26AC00482187 /* StringUtil.swift */; };
 		92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCF0292985FF120066A4A4 /* ItemEditView.swift */; };
 		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
 		92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18850297C6F12009BD0E4 /* ItemDetailView.swift */; };
@@ -37,6 +38,7 @@
 		925C9C69298EDEA900482187 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		925C9C71298EE7A400482187 /* iExpireProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iExpireProject.xcdatamodel; sourceTree = "<group>"; };
+		925C9C73298F26AC00482187 /* StringUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 		92CCF0292985FF120066A4A4 /* ItemEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
 		92E1884B297BB04E009BD0E4 /* iExpire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpire.entitlements; sourceTree = "<group>"; };
 		92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				92E18867298378A3009BD0E4 /* CoreDataUtil.swift */,
 				92E188702984B279009BD0E4 /* FileUtil.swift */,
 				92E188722984CB14009BD0E4 /* CSVDocument.swift */,
+				925C9C73298F26AC00482187 /* StringUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				92E18855297CBD6A009BD0E4 /* ConditionalSpacer.swift in Sources */,
 				92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */,
 				92E1886429809063009BD0E4 /* SettingsView.swift in Sources */,
+				925C9C74298F26AC00482187 /* StringUtil.swift in Sources */,
 				92E1885E297E52AE009BD0E4 /* ExpirationTextView.swift in Sources */,
 				92E1885C297E4D70009BD0E4 /* DateStringUtil.swift in Sources */,
 				92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */,

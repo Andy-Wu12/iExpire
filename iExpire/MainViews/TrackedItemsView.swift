@@ -19,6 +19,14 @@ struct TrackedItemsView: View {
     @State private var showingSettings = false
     @State private var showingDeleteAlert = false
     
+    var categories: Set<String> {
+        var uniqueCategories = Set<String>()
+        items.forEach() { item in
+            uniqueCategories.insert(item.wrappedCategory)
+        }
+        return uniqueCategories
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -67,7 +75,7 @@ struct TrackedItemsView: View {
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
-                AddExpirationView()
+                AddExpirationView(categories: categories.sorted())
             }
             .sheet(isPresented: $showingSettings) {
                 SettingsView(items: items)
