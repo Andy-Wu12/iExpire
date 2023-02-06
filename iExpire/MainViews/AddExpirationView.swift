@@ -18,9 +18,13 @@ struct AddExpirationView: View {
     @State private var image: PhotosPickerItem? = nil
     @State private var imageData: Data? = nil
     
+    @State private var category = "Other"
+    @State private var showCustomCategory = true
+    
+    var categories: [String]
     
     func isValidItem() -> Bool {
-        !(name.isEmpty)
+        !(name.isTrimmedEmpty() || category.isTrimmedEmpty())
     }
     
     var body: some View {
@@ -36,10 +40,33 @@ struct AddExpirationView: View {
                     }
                     
                     Section {
-                        TextEditor(text: $notes)
+                        if showCustomCategory {
+                            HStack {
+                                Text("Category:")
+                                TextField("Category", text: $category)
+                            }
+                        } else {
+                            Picker("Category:", selection: $category) {
+                                ForEach(categories, id: \.self) {
+                                    Text($0).tag($0)
+                                }
+                            }
+                        }
+                        Button(showCustomCategory ? "Choose existing category" : "Make Custom Category") {
+                            showCustomCategory.toggle()
+                            if !showCustomCategory { category = categories.first! }
+                        }
+                        .disabled(categories.count <= 0)
+                    }
+                    
+                    Section {
+                        HStack {
+                            Text("Notes:")
+                            TextEditor(text: $notes)
+                        }
                         PhotoSelectorView(selectedItem: $image, imageData: $imageData)
                     } header: {
-                        Text("Optional notes and photo")
+                        Text("Optional fields")
                     }
                     
                     Button("Submit") {
@@ -59,6 +86,7 @@ struct AddExpirationView: View {
         newItem.image = imageData
         newItem.notes = notes
         newItem.expirationDateTime = createDateAtMidnight(date: expDate)
+        newItem.category = category
         
         do {
             try moc.save()
@@ -97,6 +125,6 @@ struct AddExpirationView: View {
 
 struct AddExpirationView_Previews: PreviewProvider {
     static var previews: some View {
-        AddExpirationView()
+        AddExpirationView(categories: ["Fridge", "Pets"])
     }
 }

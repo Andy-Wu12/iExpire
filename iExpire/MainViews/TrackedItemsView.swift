@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OrderedCollections
 
 struct TrackedItemsView: View {
     @Environment(\.managedObjectContext) var moc
@@ -18,6 +19,29 @@ struct TrackedItemsView: View {
     @State private var showingAddScreen = false
     @State private var showingSettings = false
     @State private var showingDeleteAlert = false
+    
+    var categories: Set<String> {
+        var uniqueCategories = Set<String>()
+        items.forEach() { item in
+            uniqueCategories.insert(item.wrappedCategory)
+        }
+        return uniqueCategories
+    }
+     
+    var itemsGroupedByCategory: OrderedDictionary<String, [(Item, Int)]> {
+        // Extra Int is for onDelete to properly delete correct Item
+        var groupedItems: OrderedDictionary<String, [(Item, Int)]> = [:]
+        for i in 0..<items.count {
+            let item = items[i]
+            if let _ = groupedItems[item.wrappedCategory] {
+                groupedItems[item.wrappedCategory]!.append((item, i))
+            } else {
+                groupedItems[item.wrappedCategory] = [(item, i)]
+            }
+        }
+        
+        return groupedItems
+    }
     
     var body: some View {
         NavigationView {
@@ -35,14 +59,27 @@ struct TrackedItemsView: View {
                     }
                 }
                 List {
-                    ForEach(items, id: \.self) { item in
-                        NavigationLink {
-                            ItemDetailView(item: item)
-                        } label: {
-                            ListItem(item: item)
+                    // Section
+                    ForEach(itemsGroupedByCategory.keys, id: \.self) { section in
+                        Section {
+                            ForEach(itemsGroupedByCategory[section]!, id: \.0) { item in
+                                NavigationLink {
+                                    ItemDetailView(item: item.0)
+                                } label: {
+                                    ListItem(item: item.0)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    Button(role: .destructive) {
+                                        delete(at: IndexSet(integer: item.1))
+                                    } label: {
+                                        Image(systemName: "trash")
+                                    }
+                                }
+                            }
+                        } header: {
+                            Text(section)
                         }
                     }
-                    .onDelete(perform: delete)
                 }
                 .listStyle(.plain)
             }
@@ -55,9 +92,6 @@ struct TrackedItemsView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingSettings.toggle()
@@ -67,7 +101,7 @@ struct TrackedItemsView: View {
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
-                AddExpirationView()
+                AddExpirationView(categories: categories.sorted())
             }
             .sheet(isPresented: $showingSettings) {
                 SettingsView(items: items)

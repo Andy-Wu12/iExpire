@@ -50,8 +50,13 @@ struct ItemDetailPortrait: View {
     
     var body: some View {
         VStack {
-            Text(item.wrappedName)
-                .font(.largeTitle)
+            VStack {
+                Text(item.wrappedName)
+                    .font(.largeTitle)
+                Text(item.wrappedCategory)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+            }
             
             ConditionalSpacer(isOn: item.image == nil)
             
@@ -97,8 +102,13 @@ struct ItemDetailLandscape: View {
     
     var body: some View {
         VStack {
-            Text(item.wrappedName)
-                .font(.largeTitle)
+            VStack {
+                Text(item.wrappedName)
+                    .font(.largeTitle)
+                Text(item.wrappedCategory)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+            }
             
             HStack {
                 LoadedImageView(imageData: item.image)
@@ -143,8 +153,16 @@ struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let item = Item(context: moc)
         item.name = "Bananas"
+        item.notes =
+        """
+        flkdgjbhfkseiodfhkbsekhrdbkshdbfskefdhbekwsdfhbskdhbskesrdhbdgf
+        serdgf
+        adwads23r4wiuygjhakn
+        """
+        item.category = "Food"
         item.expirationDate = dateToFormatString(date: Date.now)
-        
+          
         return ItemDetailView(item: item)
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92513759298C8DB600916591 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92513757298C8DB600916591 /* Item+CoreDataClass.swift */; };
-		9251375A298C8DB600916591 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92513758298C8DB600916591 /* Item+CoreDataProperties.swift */; };
+		925C9C6D298EDEA900482187 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C69298EDEA900482187 /* Item+CoreDataProperties.swift */; };
+		925C9C6E298EDEA900482187 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */; };
+		925C9C72298EE7A400482187 /* iExpireProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */; };
+		925C9C74298F26AC00482187 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C9C73298F26AC00482187 /* StringUtil.swift */; };
+		925C9C7A298F6F6A00482187 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 925C9C79298F6F6A00482187 /* OrderedCollections */; };
 		92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCF0292985FF120066A4A4 /* ItemEditView.swift */; };
 		92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */; };
 		92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18850297C6F12009BD0E4 /* ItemDetailView.swift */; };
@@ -28,14 +31,15 @@
 		92FA0B58297A399D00F12C85 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B55297A399D00F12C85 /* .gitignore */; };
 		92FA0B59297A399D00F12C85 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B56297A399D00F12C85 /* README.md */; };
 		92FA0B5A297A399D00F12C85 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 92FA0B57297A399D00F12C85 /* LICENSE */; };
-		92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */; };
 		92FA0B70297A531600F12C85 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B6F297A531600F12C85 /* DataController.swift */; };
 		92FA0B72297A5D3C00F12C85 /* TrackedItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		92513757298C8DB600916591 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		92513758298C8DB600916591 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		925C9C69298EDEA900482187 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		925C9C71298EE7A400482187 /* iExpireProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iExpireProject.xcdatamodel; sourceTree = "<group>"; };
+		925C9C73298F26AC00482187 /* StringUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 		92CCF0292985FF120066A4A4 /* ItemEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
 		92E1884B297BB04E009BD0E4 /* iExpire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iExpire.entitlements; sourceTree = "<group>"; };
 		92E1884C297BB47C009BD0E4 /* PhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorView.swift; sourceTree = "<group>"; };
@@ -57,7 +61,6 @@
 		92FA0B55297A399D00F12C85 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		92FA0B56297A399D00F12C85 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		92FA0B57297A399D00F12C85 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		92FA0B5C297A3F5A00F12C85 /* iExpireProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iExpireProject.xcdatamodel; sourceTree = "<group>"; };
 		92FA0B6F297A531600F12C85 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		92FA0B71297A5D3C00F12C85 /* TrackedItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				925C9C7A298F6F6A00482187 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +108,7 @@
 				92E18867298378A3009BD0E4 /* CoreDataUtil.swift */,
 				92E188702984B279009BD0E4 /* FileUtil.swift */,
 				92E188722984CB14009BD0E4 /* CSVDocument.swift */,
+				925C9C73298F26AC00482187 /* StringUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 		92FA0B3A297A326F00F12C85 = {
 			isa = PBXGroup;
 			children = (
+				925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */,
 				92FA0B55297A399D00F12C85 /* .gitignore */,
 				92FA0B57297A399D00F12C85 /* LICENSE */,
 				92FA0B56297A399D00F12C85 /* README.md */,
@@ -138,7 +144,6 @@
 				92FA0B46297A326F00F12C85 /* iExpireApp.swift */,
 				92FA0B4A297A327300F12C85 /* Assets.xcassets */,
 				92FA0B4D297A327300F12C85 /* Preview Content */,
-				92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */,
 				92FA0B6F297A531600F12C85 /* DataController.swift */,
 			);
 			path = iExpire;
@@ -155,8 +160,8 @@
 		92FA0B5E297A408500F12C85 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92513757298C8DB600916591 /* Item+CoreDataClass.swift */,
-				92513758298C8DB600916591 /* Item+CoreDataProperties.swift */,
+				925C9C6A298EDEA900482187 /* Item+CoreDataClass.swift */,
+				925C9C69298EDEA900482187 /* Item+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +182,9 @@
 			dependencies = (
 			);
 			name = iExpire;
+			packageProductDependencies = (
+				925C9C79298F6F6A00482187 /* OrderedCollections */,
+			);
 			productName = iExpire;
 			productReference = 92FA0B43297A326F00F12C85 /* iExpire.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 92FA0B3A297A326F00F12C85;
+			packageReferences = (
+				925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 92FA0B44297A326F00F12C85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,21 +249,22 @@
 				92E188732984CB14009BD0E4 /* CSVDocument.swift in Sources */,
 				92E188662980D995009BD0E4 /* Notifications.swift in Sources */,
 				92E188622980900D009BD0E4 /* NotificationPermission.swift in Sources */,
-				9251375A298C8DB600916591 /* Item+CoreDataProperties.swift in Sources */,
-				92FA0B5D297A3F5A00F12C85 /* iExpireProject.xcdatamodeld in Sources */,
+				925C9C6D298EDEA900482187 /* Item+CoreDataProperties.swift in Sources */,
 				92FA0B70297A531600F12C85 /* DataController.swift in Sources */,
 				92FA0B49297A326F00F12C85 /* AddExpirationView.swift in Sources */,
 				92E18851297C6F12009BD0E4 /* ItemDetailView.swift in Sources */,
+				925C9C6E298EDEA900482187 /* Item+CoreDataClass.swift in Sources */,
 				92E18855297CBD6A009BD0E4 /* ConditionalSpacer.swift in Sources */,
 				92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */,
 				92E1886429809063009BD0E4 /* SettingsView.swift in Sources */,
+				925C9C74298F26AC00482187 /* StringUtil.swift in Sources */,
 				92E1885E297E52AE009BD0E4 /* ExpirationTextView.swift in Sources */,
-				92513759298C8DB600916591 /* Item+CoreDataClass.swift in Sources */,
 				92E1885C297E4D70009BD0E4 /* DateStringUtil.swift in Sources */,
 				92CCF02A2985FF120066A4A4 /* ItemEditView.swift in Sources */,
 				92FA0B47297A326F00F12C85 /* iExpireApp.swift in Sources */,
 				92E18868298378A3009BD0E4 /* CoreDataUtil.swift in Sources */,
 				92FA0B72297A5D3C00F12C85 /* TrackedItemsView.swift in Sources */,
+				925C9C72298EE7A400482187 /* iExpireProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,14 +495,34 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		925C9C79298F6F6A00482187 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 925C9C78298F6F6A00482187 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
-		92FA0B5B297A3F5A00F12C85 /* iExpireProject.xcdatamodeld */ = {
+		925C9C70298EE7A400482187 /* iExpireProject.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				92FA0B5C297A3F5A00F12C85 /* iExpireProject.xcdatamodel */,
+				925C9C71298EE7A400482187 /* iExpireProject.xcdatamodel */,
 			);
-			currentVersion = 92FA0B5C297A3F5A00F12C85 /* iExpireProject.xcdatamodel */;
-			path = iExpireProject.xcdatamodeld;
+			currentVersion = 925C9C71298EE7A400482187 /* iExpireProject.xcdatamodel */;
+			name = iExpireProject.xcdatamodeld;
+			path = iExpire/iExpireProject.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
