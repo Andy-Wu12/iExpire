@@ -78,6 +78,7 @@ struct TrackedItemsView: View {
                             }
                         } header: {
                             Text(section)
+                                .accessibilityLabel("\(section) category")
                         }
                     }
                 }
@@ -144,6 +145,8 @@ struct ListItem: View {
                 ExpirationTextView(expirationDate: item.wrappedDateTime)
                     .padding()
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(item.wrappedName) expires on \(item.wrappedExpiration)")
         }
     }
 }
