@@ -34,7 +34,7 @@ struct AddExpirationView: View {
                     Section {
                         TextField("Item name", text: $name)
                             .autocorrectionDisabled()
-                        DatePicker("Expires:", selection: $expDate, displayedComponents: [.date])
+                        DatePicker("Expiration Date:", selection: $expDate, displayedComponents: [.date])
                     } header: {
                         Text("Required")
                     }

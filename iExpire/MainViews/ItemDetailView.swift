@@ -57,6 +57,8 @@ struct ItemDetailPortrait: View {
                     .font(.subheadline)
                     .fontWeight(.light)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(item.wrappedName) in the \(item.wrappedCategory) category")
             
             ConditionalSpacer(isOn: item.image == nil)
             
@@ -68,24 +70,29 @@ struct ItemDetailPortrait: View {
                 )
                 .shadow(color: Color("UniversalPurple"), radius: 10)
                 .padding()
+                .accessibilityHidden(true)
             
             if !item.wrappedNotes.isEmpty {
                 Section {
                     Text(item.wrappedNotes)
+                        .accessibilityLabel("Notes: \(item.wrappedNotes)")
                 } header: {
                     Text("Notes")
                         .fontWeight(.heavy)
                         .padding(.top)
+                        .accessibilityHidden(true)
                 }
             }
             
             Section {
                 ExpirationTextView(expirationDate: item.wrappedDateTime)
                     .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
+                    .accessibilityLabel("Expiration date \(item.wrappedExpiration)")
             } header: {
                 Text("Expiration Date")
                     .fontWeight(.heavy)
                     .padding(.top)
+                    .accessibilityHidden(true)
             }
             
             ConditionalSpacer(isOn: item.image == nil)
@@ -109,6 +116,8 @@ struct ItemDetailLandscape: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(item.wrappedName) in the \(item.wrappedCategory) category")
             
             HStack {
                 LoadedImageView(imageData: item.image)
@@ -119,6 +128,7 @@ struct ItemDetailLandscape: View {
                     )
                     .shadow(color: Color("UniversalPurple"), radius: 10)
                     .padding()
+                    .accessibilityHidden(true)
                 
                 VStack {
                     if !item.wrappedNotes.isEmpty {
@@ -128,16 +138,20 @@ struct ItemDetailLandscape: View {
                             Text("Notes")
                                 .fontWeight(.heavy)
                                 .padding(.top)
+                                .accessibilityHidden(true)
                         }
+                        
                     }
                     
                     Section {
                         ExpirationTextView(expirationDate: item.wrappedDateTime)
                             .font(.custom("San Francisco", size: 50, relativeTo: .largeTitle))
+                            .accessibilityLabel("Expiration date \(item.wrappedExpiration)")
                     } header: {
                         Text("Expiration Date")
                             .fontWeight(.heavy)
                             .padding(.top)
+                            .accessibilityHidden(true)
                     }
                 }
             }
