@@ -27,7 +27,11 @@ struct TrackedItemsView: View {
         }
         return uniqueCategories
     }
-     
+    
+    var itemsGroupedByDateString: Dictionary<String, [Item]> {
+        groupElementsByProperty(items, property: \.wrappedExpiration)
+    }
+    
     var itemsGroupedByCategory: OrderedDictionary<String, [(Item, Int)]> {
         // Extra Int is for onDelete to properly delete correct Item
         var groupedItems: OrderedDictionary<String, [(Item, Int)]> = [:]
@@ -57,6 +61,12 @@ struct TrackedItemsView: View {
                         clearEntityRecords(managedObjectContext: moc, entityName: "Item",
                                            predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
                     }
+                }
+                NavigationLink {
+                    ItemBarChart(groupedItems: itemsGroupedByDateString)
+                } label: {
+                    Text("View as chart")
+                        .padding()
                 }
                 List {
                     // Section

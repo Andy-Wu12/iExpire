@@ -27,3 +27,7 @@ func clearEntityRecords(managedObjectContext moc: NSManagedObjectContext, entity
         fatalError("Failed to perform batch delete: \(error)")
     }
 }
+
+func groupElementsByProperty<T, V: CustomStringConvertible>(_ items: any Sequence<T>, property: KeyPath<T, V>) -> Dictionary<V, [T]> {
+    Dictionary(grouping: items, by: { $0[keyPath: property] })
+}
