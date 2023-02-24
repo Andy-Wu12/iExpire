@@ -27,7 +27,11 @@ struct TrackedItemsView: View {
         }
         return uniqueCategories
     }
-     
+    
+    var itemsGroupedByDateString: OrderedDictionary<String, [Item]> {
+        groupElementsByProperty(items, property: \.wrappedExpiration)
+    }
+    
     var itemsGroupedByCategory: OrderedDictionary<String, [(Item, Int)]> {
         // Extra Int is for onDelete to properly delete correct Item
         var groupedItems: OrderedDictionary<String, [(Item, Int)]> = [:]
@@ -46,16 +50,27 @@ struct TrackedItemsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button("Delete EXPIRED") {
-                    showingDeleteAlert.toggle()
-                }
-                .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
-                    Button("Cancel", role: .cancel) {
+                HStack {
+                    Button("Delete EXPIRED") {
                         showingDeleteAlert.toggle()
                     }
-                    Button("OK", role: .destructive) {
-                        clearEntityRecords(managedObjectContext: moc, entityName: "Item",
-                                           predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
+                    .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
+                        Button("Cancel", role: .cancel) {
+                            showingDeleteAlert.toggle()
+                        }
+                        Button("OK", role: .destructive) {
+                            clearEntityRecords(managedObjectContext: moc, entityName: "Item",
+                                               predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        ItemBarChart(groupedItems: itemsGroupedByDateString)
+                    } label: {
+                        Text("View Charts")
+                            .padding()
                     }
                 }
                 List {
