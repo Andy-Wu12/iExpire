@@ -28,7 +28,7 @@ struct TrackedItemsView: View {
         return uniqueCategories
     }
     
-    var itemsGroupedByDateString: Dictionary<String, [Item]> {
+    var itemsGroupedByDateString: OrderedDictionary<String, [Item]> {
         groupElementsByProperty(items, property: \.wrappedExpiration)
     }
     
@@ -50,23 +50,28 @@ struct TrackedItemsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button("Delete EXPIRED") {
-                    showingDeleteAlert.toggle()
-                }
-                .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
-                    Button("Cancel", role: .cancel) {
+                HStack {
+                    Button("Delete EXPIRED") {
                         showingDeleteAlert.toggle()
                     }
-                    Button("OK", role: .destructive) {
-                        clearEntityRecords(managedObjectContext: moc, entityName: "Item",
-                                           predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
+                    .alert("This action is IRREVERSIBLE", isPresented: $showingDeleteAlert) {
+                        Button("Cancel", role: .cancel) {
+                            showingDeleteAlert.toggle()
+                        }
+                        Button("OK", role: .destructive) {
+                            clearEntityRecords(managedObjectContext: moc, entityName: "Item",
+                                               predicate: NSPredicate(format: "expirationDateTime < %@", createDateAtMidnight(date: Date.now) as CVarArg))
+                        }
                     }
-                }
-                NavigationLink {
-                    ItemBarChart(groupedItems: itemsGroupedByDateString)
-                } label: {
-                    Text("View as chart")
-                        .padding()
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        ItemBarChart(groupedItems: itemsGroupedByDateString)
+                    } label: {
+                        Text("View Charts")
+                            .padding()
+                    }
                 }
                 List {
                     // Section

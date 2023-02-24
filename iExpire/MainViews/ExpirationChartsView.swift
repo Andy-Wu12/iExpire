@@ -7,10 +7,11 @@
 
 import SwiftUI
 import Charts
+import OrderedCollections
 
 // Potentially add multiple chart types here
 struct ExpirationChartsView: View {
-    var groupedItems: Dictionary<String, [Item]>
+    var groupedItems: OrderedDictionary<String, [Item]>
     
     var body: some View {
         NavigationLink {
@@ -22,20 +23,20 @@ struct ExpirationChartsView: View {
 }
 
 struct ItemBarChart: View {
-    var groupedItems: Dictionary<String, [Item]>
+    var groupedItems: OrderedDictionary<String, [Item]>
     
     var body: some View {
-        List {
-            ForEach(Array(groupedItems.keys), id: \.self) { sectionKey in
-                Section {
-                    ForEach(groupedItems[sectionKey]!) { item in
-                        Text(item.wrappedName)
-                            .font(.system(size: 32).italic())
-                    }
-                } header: {
-                    Text(sectionKey)
+        Section {
+            Chart {
+                ForEach(Array(groupedItems.keys), id: \.self) { sectionKey in
+                    BarMark(
+                        x: .value("Expiration Date", sectionKey),
+                        y: .value("Total Count", groupedItems[sectionKey]!.count)
+                    )
                 }
             }
+        } header: {
+            Text("# of Tracked Items By Expiration Date")
         }
     }
 }

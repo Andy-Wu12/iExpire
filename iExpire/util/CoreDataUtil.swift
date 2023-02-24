@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import OrderedCollections
 
 func clearEntityRecords(managedObjectContext moc: NSManagedObjectContext, entityName: String, predicate: NSPredicate? = nil) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -28,6 +29,6 @@ func clearEntityRecords(managedObjectContext moc: NSManagedObjectContext, entity
     }
 }
 
-func groupElementsByProperty<T, V: CustomStringConvertible>(_ items: any Sequence<T>, property: KeyPath<T, V>) -> Dictionary<V, [T]> {
-    Dictionary(grouping: items, by: { $0[keyPath: property] })
+func groupElementsByProperty<T, V: CustomStringConvertible>(_ items: any Sequence<T>, property: KeyPath<T, V>) -> OrderedDictionary<V, [T]> {
+    OrderedDictionary(grouping: items, by: { $0[keyPath: property] })
 }
