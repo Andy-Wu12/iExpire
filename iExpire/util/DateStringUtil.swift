@@ -30,6 +30,20 @@ func createDateAtMidnight(date: Date) -> Date {
     return Calendar.current.date(from: components)!
 }
 
+extension Date {
+    func comesBefore(_ date: Date) -> Bool {
+        let result = self.compare(createDateAtMidnight(date: date))
+        switch result {
+        case(.orderedSame):
+            return false
+        case(.orderedAscending):
+            return true
+        case(.orderedDescending):
+            return false
+        }
+    }
+}
+
 let monthIntDict = [
     "Jan" : 1,
     "Feb" : 2,

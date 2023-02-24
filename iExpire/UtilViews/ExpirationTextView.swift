@@ -13,15 +13,7 @@ struct ExpirationTextView: View {
     let now = createDateAtMidnight(date: Date.now)
     
     var expired: Bool {
-        let result = expirationDate.compare(now)
-        switch result {
-        case(.orderedSame):
-            return false
-        case(.orderedAscending):
-            return true
-        case(.orderedDescending):
-            return false
-        }
+        expirationDate.comesBefore(now)
     }
     
     var body: some View {

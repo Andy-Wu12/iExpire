@@ -33,6 +33,8 @@ struct ItemBarChart: View {
                         x: .value("Expiration Date", sectionKey),
                         y: .value("Total Count", groupedItems[sectionKey]!.count)
                     )
+                    // Expired section should use red
+                    .foregroundStyle(groupedItems[sectionKey]!.first!.wrappedDateTime.comesBefore(Date.now) ? .red : .blue)
                 }
             }
         } header: {
