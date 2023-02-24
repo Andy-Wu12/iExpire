@@ -39,6 +39,7 @@ struct ItemBarChart: View {
             }
         } header: {
             Text("# of Tracked Items By Expiration Date")
+                .accessibilityLabel("Number of tracked items grouped by expiration date")
         }
     }
 }
